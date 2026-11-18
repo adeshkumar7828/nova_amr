@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+  Nova's outline for RViz (simple boxes, not a full model yet).
+  base_link = centre of Nova between the two drive wheels, at floor level.
+  x = forward, y = left, z = up. Metres.
+
+  EDIT the sizes below to match Nova (measure with a tape):
+    body:   length 0.50 (front-back), width 0.40 (left-right), height 0.15
+    wheels: radius 0.05, at y = +-0.22 (half the distance between the wheels)
+  The LiDAR's position is NOT here: it is set in launch/lidar.launch.py (lidar_x / lidar_z / lidar_yaw).
+-->
+<robot name="nova">
+  <material name="body"><color rgba="0.15 0.39 0.92 0.55"/></material>
+  <material name="wheel"><color rgba="0.1 0.1 0.1 1"/></material>
+  <material name="front"><color rgba="0.95 0.95 0.95 1"/></material>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry><box size="0.50 0.40 0.15"/></geometry>
+      <material name="body"/>
+    </visual>
+  </link>
+
+  <!-- white strip = Nova's FRONT, so you always know which way it faces in RViz -->
+  <link name="front_marker">
+    <visual>
+      <geometry><box size="0.02 0.36 0.02"/></geometry>
+      <material name="front"/>
+    </visual>
+  </link>
+  <joint name="front_marker_joint" type="fixed">
+    <parent link="base_link"/><child link="front_marker"/>
+    <origin xyz="0.24 0 0.21" rpy="0 0 0"/>
+  </joint>
+
+  <link name="left_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+      <material name="wheel"/>
+    </visual>
+  </link>
+  <joint name="left_wheel_joint" type="fixed">
+    <parent link="base_link"/><child link="left_wheel"/>
+    <origin xyz="0 0.22 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="right_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+      <material name="wheel"/>
+    </visual>
+  </link>
+  <joint name="right_wheel_joint" type="fixed">
+    <parent link="base_link"/><child link="right_wheel"/>
+    <origin xyz="0 -0.22 0.05" rpy="0 0 0"/>
+  </joint>
+</robot>

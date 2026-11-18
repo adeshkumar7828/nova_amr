@@ -1,0 +1,23 @@
+{
+  "name": "nova-control",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nova AMR control app: Node server (talks to the ESP32) + React control page",
+  "type": "module",
+  "scripts": {
+    "start": "vite build && node server/server.js",
+    "server": "node server/server.js",
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^6.0.7"
+  }
+}

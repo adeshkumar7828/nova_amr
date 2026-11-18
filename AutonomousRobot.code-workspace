@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../AutonomousRobot"
+		},
+		{
+			"name": "Nova AMR",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
